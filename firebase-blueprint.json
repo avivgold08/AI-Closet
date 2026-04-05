@@ -1,0 +1,41 @@
+{
+  "entities": {
+    "user": {
+      "title": "User Profile",
+      "description": "Stores user profile information including their base photo for try-on.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The user's unique ID." },
+        "photoUrl": { "type": "string", "description": "Base64 or URL of the user's photo for try-on." },
+        "displayName": { "type": "string", "description": "User's display name." },
+        "email": { "type": "string", "description": "User's email address." }
+      },
+      "required": ["uid"]
+    },
+    "clothing": {
+      "title": "Clothing Item",
+      "description": "Represents a piece of clothing in the user's closet.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique ID of the item." },
+        "uid": { "type": "string", "description": "Owner's unique ID." },
+        "name": { "type": "string", "description": "Name of the clothing item." },
+        "category": { "type": "string", "enum": ["top", "bottom", "shoes", "accessory", "full-body", "hoodie"], "description": "Category of the item." },
+        "imageUrl": { "type": "string", "description": "Base64 or URL of the clothing image." },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "Tags for the item." },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp." }
+      },
+      "required": ["id", "uid", "name", "category", "imageUrl"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "User profile data."
+    },
+    "/users/{userId}/clothes/{clothingId}": {
+      "schema": "clothing",
+      "description": "User's clothing collection."
+    }
+  }
+}

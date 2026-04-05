@@ -1,0 +1,7 @@
+{
+  "name": "Virtual Closet & Try-On",
+  "description": "An app that lets you upload your clothes and a photo of yourself to virtually try on outfits and get personalized recommendations for any occasion.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
